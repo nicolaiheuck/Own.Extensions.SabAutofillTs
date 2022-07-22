@@ -1,8 +1,10 @@
 const path = require("path")
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
     mode: "production",
     entry: {
-        popup: './src/popup/index.ts'
+        popup: './src/ts/popup.ts'
     },
     module: {
         rules: [
@@ -13,11 +15,22 @@ module.exports = {
             }
         ]
     },
+    plugins: [
+        new CleanWebpackPlugin(),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: "./src/views/*.html",
+                    to: "[name].html"
+                }
+            ]
+        })
+    ],
     resolve: {
         extensions: ['.ts', '.js']
     },
     output: {
         path: path.resolve(__dirname, "build"),
-        filename: "[name].js"
+        filename: "js/[name].js"
     }
 }
