@@ -1,4 +1,5 @@
 import { StorageConsts } from '../../consts/storage-consts';
+import { Profile } from '../../models/profiles.types';
 
 const { profilesKey, formKey } = StorageConsts;
 
@@ -25,9 +26,9 @@ const storageHelper = {
 		return value;
 	},
 	getProfilesAsync: async () => {
-		return await storageHelper.getValueAsync(profilesKey);
+		return (await storageHelper.getValueAsync(profilesKey)) as Profile[];
 	},
 	getFormDataAsync: async () => {
-		return await storageHelper.getValueAsync(formKey);
+		return (await storageHelper.getValueAsync(formKey)) as Profile;
 	},
 };
