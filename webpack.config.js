@@ -25,7 +25,7 @@ module.exports = {
                 },
                 {
                     from: "./public/*.*",
-                    to: "[name].[ext]"
+                    to: "[name][ext]"
                 }
             ]
         })
