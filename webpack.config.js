@@ -2,7 +2,7 @@ const path = require("path")
 module.exports = {
     mode: "production",
     entry: {
-        popup: './src/popup/popup.ts'
+        popup: './src/popup/index.ts'
     },
     module: {
         rules: [
@@ -18,6 +18,6 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, "build"),
-        filename: "bundle.js"
+        filename: "[name].js"
     }
 }
