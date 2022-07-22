@@ -21,14 +21,15 @@ module.exports = {
             patterns: [
                 {
                     from: "./src/views/*.html",
-                    to: "[name].html"
+                    to: "views/[name].html"
+                },
+                {
+                    from: "./public/*.*",
+                    to: "[name].[ext]"
                 }
             ]
         })
     ],
-    resolve: {
-        extensions: ['.ts', '.js']
-    },
     output: {
         path: path.resolve(__dirname, "build"),
         filename: "js/[name].js"
