@@ -4,4 +4,3 @@ type TestThing = {
 export const MyTestThing: TestThing = {
     Run: () => console.log("Test")
 }
-MyTestThing.Run();
