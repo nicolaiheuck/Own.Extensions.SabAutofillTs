@@ -3,9 +3,9 @@ import { Profile } from '../../models/profiles.types';
 
 const { profilesKey, formKey } = StorageConsts;
 
-const storageHelper = {
+export const StorageHelper = {
 	keyExistsAsync: async (key: any) => {
-		return (await storageHelper.getValueAsync(key)) !== undefined;
+		return (await StorageHelper.getValueAsync(key)) !== undefined;
 	},
 	setValueAsync: async (key: string | number, value: any) => {
 		let data: any = {};
@@ -26,9 +26,10 @@ const storageHelper = {
 		return value;
 	},
 	getProfilesAsync: async () => {
-		return (await storageHelper.getValueAsync(profilesKey)) as Profile[];
+		return (await StorageHelper.getValueAsync(profilesKey)) as Profile[];
 	},
 	getFormDataAsync: async () => {
-		return (await storageHelper.getValueAsync(formKey)) as Profile;
+		return (await StorageHelper.getValueAsync(formKey)) as Profile;
 	},
+	//NH_TODO: Create save profile
 };

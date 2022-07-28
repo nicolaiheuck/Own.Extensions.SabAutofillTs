@@ -5,6 +5,14 @@ export type Profile = {
 	email: string;
 	phone: string;
 	regNr: string;
-	kmDriven: string;
+	kmDriven: number;
 	workshop: Workshop;
+};
+export const EmptyProfile: Profile = {
+	email: '',
+	kmDriven: 0,
+	name: '',
+	phone: '',
+	regNr: '',
+	workshop: 'Randers',
 };
