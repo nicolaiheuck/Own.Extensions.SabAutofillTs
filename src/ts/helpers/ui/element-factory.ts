@@ -34,7 +34,7 @@ export const ElementFactory: ElementFactoryType = {
 	createProfileEditButton: (profile: Profile) => {
 		const button = ElementFactory.createButton(
 			'Rediger',
-			() => FormHelper.loadProfile(profile),
+			async () => await FormHelper.loadProfileAsync(profile, false),
 			['btn', 'btn-primary', 'mr-2']
 		);
 		return button;

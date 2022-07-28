@@ -11,6 +11,6 @@ export const WorkshopSelectHelper: WorkshopSelectHelperType = {
 			(o) => (o as HTMLOptionElement).value === value
 		) as HTMLOptionElement;
 
-		targetOption.selected = true;
+		if (targetOption) targetOption.selected = true;
 	},
 };

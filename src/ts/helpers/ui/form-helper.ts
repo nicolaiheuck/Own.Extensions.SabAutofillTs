@@ -1,14 +1,20 @@
 import { Guid } from 'guid-typescript';
 import { EmptyProfile, Profile } from '../../models/profiles.types';
+import { StorageHelper } from '../storage/storage-helper';
 import { FormHelperType } from './form-helper.types';
 import { WorkshopSelectHelper } from './workshop-select-helper';
 
 export const FormHelper: FormHelperType = {
-	loadProfile: function (profile: Profile) {
+	loadProfileAsync: async function (
+		profile: Profile,
+		preserveFormData: Boolean = true
+	) {
 		for (const key in profile) {
 			this.setFieldValue(`profile-${key}`, (profile as any)[key]);
 		}
 
+		console.log('What is the default value of preserveFormData?', preserveFormData);
+		if (preserveFormData === false) await StorageHelper.clearFormDataAsync();
 		const submit = document.getElementById('form-submit');
 		if (submit) submit.innerText = 'Gem';
 	},
@@ -34,7 +40,8 @@ export const FormHelper: FormHelperType = {
 			WorkshopSelectHelper.selectByValue(field, value);
 		}
 	},
-	clearForm: () => {
+	clearFormAsync: async () => {
+		await StorageHelper.clearFormDataAsync();
 		for (const key in EmptyProfile) {
 			FormHelper.setFieldValue(`profile-${key}`, '');
 		}
@@ -45,5 +52,18 @@ export const FormHelper: FormHelperType = {
 	setRandomGuid: () => {
 		const guid = document.getElementById('profile-guid') as HTMLInputElement;
 		if (guid) guid.value = Guid.create().toString();
+	},
+	setOnChangeEventHandler: (eventHandler: () => Promise<void>) => {
+		const form = document.getElementById('new-profile-form');
+		if (!form) return;
+		const inputs = Array.from(form.querySelectorAll('input,select')) as (
+			| HTMLInputElement
+			| HTMLSelectElement
+		)[];
+		console.log('Found inputs', inputs);
+
+		for (const input of inputs) {
+			input.onchange = eventHandler;
+		}
 	},
 };

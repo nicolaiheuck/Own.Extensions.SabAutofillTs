@@ -8,15 +8,14 @@ async function main() {
 
 	await Loader.loadProfilesAsync();
 	await Loader.loadFormDataAsync();
-	// NH_TODO: Remember to load form data
 }
 async function formSubmit(event: SubmitEvent) {
 	event.preventDefault();
 
 	const profile: Profile = FormHelper.getProfile();
-	FormHelper.clearForm();
-
 	await StorageHelper.saveProfileAsync(profile);
 	await Loader.loadProfilesAsync();
+
+	await FormHelper.clearFormAsync();
 }
 document.addEventListener('DOMContentLoaded', main);

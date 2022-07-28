@@ -1,3 +1,5 @@
+import { StorageConsts } from '../../consts/storage-consts';
+import { EmptyProfile } from '../../models/profiles.types';
 import { StorageHelper } from '../storage/storage-helper';
 import { FormHelper } from '../ui/form-helper';
 import { ProfilesListHelper } from '../ui/profiles-list-helper';
@@ -7,11 +9,18 @@ export const Loader: LoaderType = {
 	loadFormDataAsync: async () => {
 		const formData = await StorageHelper.getFormDataAsync();
 		if (!formData) {
+			await StorageHelper.setValueAsync(StorageConsts.formDataKey, EmptyProfile);
 			FormHelper.setRandomGuid();
 			return;
 		}
 
-		FormHelper.loadProfile(formData);
+		console.log('Setting event handler');
+
+		FormHelper.setOnChangeEventHandler(
+			async () => await StorageHelper.saveFormDataAsync()
+		);
+		console.log('Loading form data');
+		await FormHelper.loadProfileAsync(formData);
 	},
 	loadProfilesAsync: async () => {
 		const profiles = await StorageHelper.getProfilesAsync();

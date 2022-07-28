@@ -1,8 +1,8 @@
 type StorageConstsTypes = {
 	profilesKey: string;
-	formKey: string;
+	formDataKey: string;
 };
 export const StorageConsts: StorageConstsTypes = {
 	profilesKey: 'SAB-Profiles',
-	formKey: 'SAB-FormData',
+	formDataKey: 'SAB-FormData',
 };

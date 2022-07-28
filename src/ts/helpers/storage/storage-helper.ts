@@ -1,9 +1,10 @@
 import { StorageConsts } from '../../consts/storage-consts';
 import { Profile } from '../../models/profiles.types';
+import { FormHelper } from '../ui/form-helper';
 import { ProfilesListHelper } from '../ui/profiles-list-helper';
 import { StorageHelperType } from './storage-helper.types';
 
-const { profilesKey, formKey } = StorageConsts;
+const { profilesKey, formDataKey } = StorageConsts;
 
 export const StorageHelper: StorageHelperType = {
 	keyExistsAsync: async (key: any) => {
@@ -31,7 +32,10 @@ export const StorageHelper: StorageHelperType = {
 		return (await StorageHelper.getValueAsync(profilesKey)) as Profile[];
 	},
 	getFormDataAsync: async () => {
-		return (await StorageHelper.getValueAsync(formKey)) as Profile;
+		return (await StorageHelper.getValueAsync(formDataKey)) as Profile;
+	},
+	clearFormDataAsync: async () => {
+		await StorageHelper.setValueAsync(formDataKey, {});
 	},
 	saveProfileAsync: async (profile: Profile) => {
 		let profiles = await StorageHelper.getProfilesAsync();
@@ -47,5 +51,10 @@ export const StorageHelper: StorageHelperType = {
 		profiles = profiles.filter((p) => p.guid !== profile.guid);
 		StorageHelper.setValueAsync(profilesKey, profiles);
 		ProfilesListHelper.loadProfiles(profiles);
+	},
+	saveFormDataAsync: async () => {
+		const formData = FormHelper.getProfile();
+		console.log('Saving form data', formData);
+		await StorageHelper.setValueAsync(formDataKey, formData);
 	},
 };
