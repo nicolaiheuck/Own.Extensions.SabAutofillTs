@@ -35,12 +35,7 @@ export const StorageHelper: StorageHelperType = {
 	},
 	saveProfileAsync: async (profile: Profile) => {
 		let profiles = await StorageHelper.getProfilesAsync();
-		if (profiles) {
-			//NH_TODO: Can this be made into a profiles?.filter ?
-			profiles = profiles.filter((p) => p.guid !== profile.guid);
-		} else {
-			profiles = [] as Profile[];
-		}
+		profiles = profiles?.filter((p) => p.guid !== profile.guid) ?? [];
 
 		profiles.push(profile);
 		StorageHelper.setValueAsync(profilesKey, profiles);
