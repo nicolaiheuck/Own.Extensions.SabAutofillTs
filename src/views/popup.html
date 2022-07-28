@@ -12,12 +12,7 @@
 		<table class="table" id="profiles-table">
 			<thead>
 				<tr>
-					<th>Profil</th>
-					<th>Email</th>
-					<th>Telefon</th>
-					<th>Reg nr.</th>
-					<th>Kørte km</th>
-					<th>Værksted</th>
+					<th>Profil navn</th>
 					<th></th>
 					<th></th>
 				</tr>
@@ -101,11 +96,16 @@
 					<option value="Viborg">Viborg</option>
 				</select>
 			</div>
-			<button type="submit" class="btn btn-success">Opret profil</button>
+			<button type="submit" id="form-submit" class="btn btn-success">Opret</button>
 		</form>
 		<style>
+			html,
 			body {
-				width: 800px;
+				min-width: 600px;
+			}
+			#new-profile-form {
+				margin: 10px;
+				margin-top: 0;
 			}
 		</style>
 	</body>

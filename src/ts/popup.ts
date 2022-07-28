@@ -8,6 +8,7 @@ async function main() {
 
 	await Loader.loadProfilesAsync();
 	await Loader.loadFormDataAsync();
+	// NH_TODO: Remember to load form data
 }
 async function formSubmit(event: SubmitEvent) {
 	event.preventDefault();
@@ -18,7 +19,4 @@ async function formSubmit(event: SubmitEvent) {
 	await StorageHelper.saveProfileAsync(profile);
 	await Loader.loadProfilesAsync();
 }
-setTimeout(() => {
-	//NH_TODO: Find a substitute for document.ready
-	main();
-}, 100);
+document.addEventListener('DOMContentLoaded', main);

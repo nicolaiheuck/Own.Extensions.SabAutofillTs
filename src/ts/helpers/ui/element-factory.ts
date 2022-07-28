@@ -1,4 +1,4 @@
-import { Profile, VisibleFieldsProfile } from '../../models/profiles.types';
+import { Profile } from '../../models/profiles.types';
 import { StorageHelper } from '../storage/storage-helper';
 import { ElementFactoryType } from './element-factory.types';
 import { FormHelper } from './form-helper';
@@ -18,41 +18,34 @@ export const ElementFactory: ElementFactoryType = {
 		return list;
 	},
 	createProfileTr: (profile: Profile) => {
-		const values: string[] = [];
-		for (const key in VisibleFieldsProfile) {
-			const value = (profile as any)[key];
-			values.push((value ?? '').toString());
-		}
-		const tdList = ElementFactory.createTdList(values);
-		tdList.push(ElementFactory.createProfileEditTd(profile));
-		tdList.push(ElementFactory.createProfileDeleteTd(profile));
+		const td = document.createElement('td');
+		const text = document.createElement('span');
+		text.innerHTML = profile.name;
+		text.classList.add('mr-4');
+		td.appendChild(text);
+		td.appendChild(ElementFactory.createProfileEditButton(profile));
+		td.appendChild(ElementFactory.createProfileDeleteButton(profile));
 
 		const tr = document.createElement('tr');
-		for (const td of tdList) {
-			tr.appendChild(td);
-		}
+		tr.appendChild(td);
 
 		return tr;
 	},
-	createProfileEditTd: (profile: Profile) => {
-		const td = document.createElement('td');
-		const editButton = ElementFactory.createButton(
+	createProfileEditButton: (profile: Profile) => {
+		const button = ElementFactory.createButton(
 			'Rediger',
 			() => FormHelper.loadProfile(profile),
-			['btn', 'btn-primary']
+			['btn', 'btn-primary', 'mr-2']
 		);
-		td.appendChild(editButton);
-		return td;
+		return button;
 	},
-	createProfileDeleteTd: (profile: Profile) => {
-		const td = document.createElement('td');
-		const editButton = ElementFactory.createButton(
+	createProfileDeleteButton: (profile: Profile) => {
+		const button = ElementFactory.createButton(
 			'Slet',
 			async () => await StorageHelper.deleteProfileAsync(profile),
 			['btn', 'btn-danger']
 		);
-		td.appendChild(editButton);
-		return td;
+		return button;
 	},
 	createButton: (
 		text: string,

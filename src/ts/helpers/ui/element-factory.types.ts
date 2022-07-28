@@ -5,8 +5,8 @@ export type ElementFactoryType = {
 	createTdList: (values: string[]) => HTMLTableCellElement[];
 	createProfileTr: (profile: Profile) => HTMLTableRowElement;
 
-	createProfileEditTd: (profile: Profile) => HTMLTableCellElement;
-	createProfileDeleteTd: (profile: Profile) => HTMLTableCellElement;
+	createProfileEditButton: (profile: Profile) => HTMLButtonElement;
+	createProfileDeleteButton: (profile: Profile) => HTMLButtonElement;
 	createButton: (
 		text: string,
 		onclick?: () => void,
