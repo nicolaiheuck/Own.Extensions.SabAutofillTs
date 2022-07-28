@@ -1,5 +1,6 @@
 import { StorageConsts } from '../../consts/storage-consts';
 import { Profile } from '../../models/profiles.types';
+import { ProfilesListHelper } from '../ui/profiles-list-helper';
 import { StorageHelperType } from './storage-helper.types';
 
 const { profilesKey, formKey } = StorageConsts;
@@ -11,8 +12,6 @@ export const StorageHelper: StorageHelperType = {
 	setValueAsync: async (key: string | number, value: any) => {
 		let data: any = {};
 		data[key] = value;
-		console.log('Saved', data);
-		console.log('Into', key);
 		await chrome.storage.local.set(data);
 	},
 	getValueAsync: async (key: any) => {
@@ -37,15 +36,21 @@ export const StorageHelper: StorageHelperType = {
 	saveProfileAsync: async (profile: Profile) => {
 		let profiles = await StorageHelper.getProfilesAsync();
 		if (profiles) {
-			console.log('Profiles before filter', profiles);
-			profiles = profiles.filter((p) => p.name !== profile.name);
+			//NH_TODO: Can this be made into a profiles?.filter ?
+			profiles = profiles.filter((p) => p.guid !== profile.guid);
 		} else {
-			console.log('saveProfileAsync: No profiles found');
 			profiles = [] as Profile[];
 		}
-		profiles.push(profile);
-		console.log('Saving profiles', profiles);
 
+		profiles.push(profile);
 		StorageHelper.setValueAsync(profilesKey, profiles);
+	},
+	deleteProfileAsync: async (profile: Profile) => {
+		let profiles = await StorageHelper.getProfilesAsync();
+		if (!profiles) return;
+
+		profiles = profiles.filter((p) => p.guid !== profile.guid);
+		StorageHelper.setValueAsync(profilesKey, profiles);
+		ProfilesListHelper.loadProfiles(profiles);
 	},
 };

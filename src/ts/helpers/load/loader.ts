@@ -6,7 +6,11 @@ import { LoaderType } from './loader.types';
 export const Loader: LoaderType = {
 	loadFormDataAsync: async () => {
 		const formData = await StorageHelper.getFormDataAsync();
-		if (!formData) return;
+		if (!formData) {
+			FormHelper.setRandomGuid();
+			return;
+		}
+
 		FormHelper.loadProfile(formData);
 	},
 	loadProfilesAsync: async () => {

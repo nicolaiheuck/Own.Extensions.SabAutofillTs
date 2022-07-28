@@ -6,9 +6,9 @@ export const ProfilesListHelper: ProfilesListHelperType = {
 		const table = document.getElementById('profiles-table');
 		const tbody = table?.querySelector('tbody');
 		if (!tbody) return;
+		tbody.innerHTML = '';
 
 		for (const profile of profiles) {
-			console.log('Added profile to list', profile);
 			const tr = ElementFactory.createProfileTr(profile);
 			tbody.appendChild(tr);
 		}

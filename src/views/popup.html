@@ -13,18 +13,21 @@
 		<table class="table" id="profiles-table">
 			<thead>
 				<tr>
-					<th>Profil navn</th>
+					<th>Profil</th>
 					<th>Email</th>
 					<th>Telefon</th>
 					<th>Reg nr.</th>
 					<th>Kørte km</th>
 					<th>Værksted</th>
+					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody></tbody>
 		</table>
 
 		<form id="new-profile-form">
+			<input name="profile-guid" id="profile-guid" type="hidden" />
 			<div class="form-group">
 				<label for="profile-name" class="control-label">Profil navn</label>
 				<input
@@ -76,7 +79,7 @@
 		</form>
 		<style>
 			body {
-				width: 600px;
+				width: 800px;
 			}
 		</style>
 	</body>

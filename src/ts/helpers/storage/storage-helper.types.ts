@@ -7,4 +7,5 @@ export type StorageHelperType = {
 	getProfilesAsync: () => Promise<Profile[] | undefined>;
 	getFormDataAsync: () => Promise<Profile | undefined>;
 	saveProfileAsync: (profile: Profile) => Promise<void>;
+	deleteProfileAsync: (profile: Profile) => Promise<void>;
 };

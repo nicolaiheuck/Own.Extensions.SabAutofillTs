@@ -1,3 +1,4 @@
+import { Guid } from 'guid-typescript';
 import { EmptyProfile, Profile } from '../../models/profiles.types';
 import { FormHelperType } from './form-helper.types';
 
@@ -24,8 +25,16 @@ export const FormHelper: FormHelperType = {
 
 		if (field instanceof HTMLInputElement) {
 			field.value = value;
-		} else {
-			console.debug(typeof field);
 		}
+	},
+	clearForm: () => {
+		for (const key in EmptyProfile) {
+			FormHelper.setFieldValue(`profile-${key}`, '');
+		}
+		FormHelper.setRandomGuid();
+	},
+	setRandomGuid: () => {
+		const guid = document.getElementById('profile-guid') as HTMLInputElement;
+		if (guid) guid.value = Guid.create().toString();
 	},
 };

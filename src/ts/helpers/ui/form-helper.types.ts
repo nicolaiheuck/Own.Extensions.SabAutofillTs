@@ -6,4 +6,7 @@ export type FormHelperType = {
 
 	getFieldValue: (id: string) => string;
 	setFieldValue: (id: string, value: string) => void;
+
+	clearForm: () => void;
+	setRandomGuid: () => void;
 };
