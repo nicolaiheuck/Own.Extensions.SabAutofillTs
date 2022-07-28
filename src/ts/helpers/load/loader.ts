@@ -1,11 +1,18 @@
 import { StorageHelper } from '../storage/storage-helper';
+import { FormHelper } from '../ui/form-helper';
+import { ProfilesListHelper } from '../ui/profiles-list-helper';
 import { LoaderType } from './loader.types';
 
 export const Loader: LoaderType = {
-	loadFormDataAsync: () => {
-		return StorageHelper.getFormDataAsync();
+	loadFormDataAsync: async () => {
+		const formData = await StorageHelper.getFormDataAsync();
+		if (!formData) return;
+		FormHelper.loadProfile(formData);
 	},
-	loadProfilesAsync: () => {
-		return StorageHelper.getProfilesAsync();
+	loadProfilesAsync: async () => {
+		const profiles = await StorageHelper.getProfilesAsync();
+		if (!profiles) return;
+
+		ProfilesListHelper.loadProfiles(profiles);
 	},
 };

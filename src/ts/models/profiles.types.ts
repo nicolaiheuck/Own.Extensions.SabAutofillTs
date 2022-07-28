@@ -9,10 +9,10 @@ export type Profile = {
 	workshop: Workshop;
 };
 export const EmptyProfile: Profile = {
-	email: '',
-	kmDriven: 0,
 	name: '',
+	email: '',
 	phone: '',
 	regNr: '',
+	kmDriven: 0,
 	workshop: 'Randers',
 };

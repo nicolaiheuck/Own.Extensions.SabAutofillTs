@@ -11,29 +11,24 @@ async function main() {
 	if (!target) {
 		console.error('Target not found');
 	} else {
-		const profiles: Profile[] = await Loader.loadProfilesAsync();
-		console.log('Profiles', profiles);
-		if (profiles && profiles.length > 0) {
-			const profile = profiles[0];
-
-			target.innerText = profile.name;
-		} else {
-			console.error('No profiles found');
-		}
+		await Loader.loadProfilesAsync();
+		await Loader.loadFormDataAsync();
 	}
 }
 async function formSubmit(event: SubmitEvent) {
 	event.preventDefault();
 	console.log('Submitted');
 
-	const profile: Profile = FormHelper.getProfile();
+	const profile: Profile = FormHelper.getProfile(); // NH_TODO: Add workshop as to model binding
 	console.log(profile);
 	await StorageHelper.saveProfileAsync(profile);
+	await Loader.loadProfilesAsync();
 
 	for (const key in EmptyProfile as Profile) {
 		console.log(key);
 	}
 }
 setTimeout(() => {
+	//NH_TODO: Find a substitute for document.ready
 	main();
-}, 1000);
+}, 100);

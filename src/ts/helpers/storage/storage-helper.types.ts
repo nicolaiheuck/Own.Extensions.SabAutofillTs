@@ -5,6 +5,6 @@ export type StorageHelperType = {
 	setValueAsync: (key: string, value: any) => Promise<void>;
 	getValueAsync: (key: string) => Promise<any>;
 	getProfilesAsync: () => Promise<Profile[] | undefined>;
-	getFormDataAsync: () => Promise<Profile>;
+	getFormDataAsync: () => Promise<Profile | undefined>;
 	saveProfileAsync: (profile: Profile) => Promise<void>;
 };
