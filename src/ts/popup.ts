@@ -1,4 +1,3 @@
-import { StorageConsts } from './consts/storage-consts';
 import { Loader } from './helpers/load/loader';
 import { StorageHelper } from './helpers/storage/storage-helper';
 import { FormHelper } from './helpers/ui/form-helper';
@@ -12,7 +11,8 @@ async function main() {
 	if (!target) {
 		console.error('Target not found');
 	} else {
-		const profiles = await Loader.loadProfilesAsync();
+		const profiles: Profile[] = await Loader.loadProfilesAsync();
+		console.log('Profiles', profiles);
 		if (profiles && profiles.length > 0) {
 			const profile = profiles[0];
 
@@ -28,7 +28,7 @@ async function formSubmit(event: SubmitEvent) {
 
 	const profile: Profile = FormHelper.getProfile();
 	console.log(profile);
-	StorageHelper.setValueAsync(StorageConsts.profilesKey, profile);
+	await StorageHelper.saveProfileAsync(profile);
 
 	for (const key in EmptyProfile as Profile) {
 		console.log(key);
