@@ -19,3 +19,4 @@ async function formSubmit(event: SubmitEvent) {
 	await FormHelper.clearFormAsync();
 }
 document.addEventListener('DOMContentLoaded', main);
+//NH_TODO: Add content script

@@ -13,7 +13,6 @@ export const FormHelper: FormHelperType = {
 			this.setFieldValue(`profile-${key}`, (profile as any)[key]);
 		}
 
-		console.log('What is the default value of preserveFormData?', preserveFormData);
 		if (preserveFormData === false) await StorageHelper.clearFormDataAsync();
 		const submit = document.getElementById('form-submit');
 		if (submit) submit.innerText = 'Gem';
@@ -60,7 +59,6 @@ export const FormHelper: FormHelperType = {
 			| HTMLInputElement
 			| HTMLSelectElement
 		)[];
-		console.log('Found inputs', inputs);
 
 		for (const input of inputs) {
 			input.onchange = eventHandler;

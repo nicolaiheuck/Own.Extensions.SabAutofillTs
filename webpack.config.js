@@ -5,6 +5,7 @@ module.exports = {
 	mode: 'production',
 	entry: {
 		popup: './src/ts/popup.ts',
+		contentScript: './src/ts/content-script.ts',
 	},
 	module: {
 		rules: [

@@ -6,5 +6,16 @@
 	"action": {
 		"default_popup": "/views/popup.html"
 	},
-	"permissions": ["storage"]
+	"permissions": ["storage", "activeTab"],
+	"content_scripts": [
+		{
+			"matches": [
+				"*://booking.hessel.dk/*",
+				"*://booking.dev-hessel.dk/*",
+				"*://booking.staging-hessel.dk/*",
+				"*://localhost/*"
+			],
+			"js": ["/js/contentScript.js"]
+		}
+	]
 }

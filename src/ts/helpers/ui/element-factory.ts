@@ -58,4 +58,24 @@ export const ElementFactory: ElementFactoryType = {
 		button.classList.add(...(classes ?? []));
 		return button;
 	},
+	createOption: (text: string, value: string, selected: boolean = false) => {
+		const option = document.createElement('option');
+		option.value = value;
+		option.text = text;
+		option.selected = selected;
+		return option;
+	},
+	createAutofillSelect: async () => {
+		const select = document.createElement('select');
+		const profiles = await StorageHelper.getProfilesAsync();
+		select.appendChild(ElementFactory.createOption('Vælg en profil', '', true));
+
+		for (const profile of profiles ?? []) {
+			const value = profile.guid?.toString() ?? '';
+			const text = profile.name;
+			const option = ElementFactory.createOption(text, value);
+			select.appendChild(option);
+		}
+		return select;
+	},
 };

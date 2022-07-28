@@ -12,4 +12,7 @@ export type ElementFactoryType = {
 		onclick?: () => void,
 		classes?: string[]
 	) => HTMLButtonElement;
+
+	createOption: (text: string, value: string, selected?: boolean) => HTMLOptionElement;
+	createAutofillSelect: () => Promise<HTMLSelectElement>;
 };

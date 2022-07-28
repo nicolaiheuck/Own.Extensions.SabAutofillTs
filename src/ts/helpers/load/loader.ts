@@ -14,12 +14,9 @@ export const Loader: LoaderType = {
 			return;
 		}
 
-		console.log('Setting event handler');
-
 		FormHelper.setOnChangeEventHandler(
 			async () => await StorageHelper.saveFormDataAsync()
 		);
-		console.log('Loading form data');
 		await FormHelper.loadProfileAsync(formData);
 	},
 	loadProfilesAsync: async () => {

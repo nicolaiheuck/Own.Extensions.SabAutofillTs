@@ -54,7 +54,6 @@ export const StorageHelper: StorageHelperType = {
 	},
 	saveFormDataAsync: async () => {
 		const formData = FormHelper.getProfile();
-		console.log('Saving form data', formData);
 		await StorageHelper.setValueAsync(formDataKey, formData);
 	},
 };
