@@ -19,14 +19,18 @@ RUN . ${NVM_DIR}/nvm.sh && nvm install 16.14.2
 # Copy files
 WORKDIR /app
 
+# Setup environment
 COPY package.json .
+RUN . ${NVM_DIR}/nvm.sh && npm install
+
 COPY tsconfig.json .
 COPY webpack.config.js .
 COPY src src
 COPY public public
+COPY docker/entry.sh /entry.sh
 
-# Setup environment
-RUN . ${NVM_DIR}/nvm.sh && npm install
+# RUN . ${NVM_DIR}/nvm.sh && npm run build
 
-# Build application
-RUN . ${NVM_DIR}/nvm.sh && npm run build
+# Start container
+RUN chmod +x /entry.sh
+CMD [ "/entry.sh" ]
