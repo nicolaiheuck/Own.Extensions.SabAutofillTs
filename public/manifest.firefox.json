@@ -1,0 +1,25 @@
+{
+	"manifest_version": 2,
+	"name": "SAB AutoFill",
+	"version": "1.0",
+	"description": "Auto fill predefined profiles on SAB",
+	"browser_action": {
+		"default_popup": "/views/popup.html",
+		"default_title": "Profiles"
+	},
+	"icons": {
+		"128": "icon_128x128.png"
+	},
+	"permissions": ["storage", "downloads"],
+	"content_scripts": [
+		{
+			"matches": [
+				"*://booking.hessel.dk/*",
+				"*://booking.dev-hessel.dk/*",
+				"*://booking.staging-hessel.dk/*",
+				"*://localhost/*"
+			],
+			"js": ["/js/contentScript.js"]
+		}
+	]
+}
