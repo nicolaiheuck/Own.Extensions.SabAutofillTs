@@ -1,8 +1,8 @@
 import { Guid } from 'guid-typescript';
-import { EmptyProfile, Profile } from '../../models/profiles.types';
-import { StorageHelper } from '../storage/storage-helper';
+import { EmptyProfile, Profile } from '../../../models/profiles.types';
+import { StorageHelper } from '../../storage/storage-helper';
 import { FormHelperType } from './form-helper.types';
-import { WorkshopSelectHelper } from './workshop-select-helper';
+import { WorkshopSelectHelper } from '../workshop-select-helper/workshop-select-helper';
 
 export const FormHelper: FormHelperType = {
 	loadProfileAsync: async function (

@@ -1,4 +1,4 @@
-import { ElementFactory } from './element-factory';
+import { ElementFactory } from '../element-factory/element-factory';
 import { ProfilesListHelperType } from './profiles-list-helper.types';
 
 export const ProfilesListHelper: ProfilesListHelperType = {

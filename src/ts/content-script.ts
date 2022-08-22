@@ -1,6 +1,6 @@
 import { StorageHelper } from './helpers/storage/storage-helper';
-import { AutofillHelper } from './helpers/ui/autofill-helper';
-import { ElementFactory } from './helpers/ui/element-factory';
+import { AutofillHelper } from './helpers/ui/autofill-helper/autofill-helper';
+import { ElementFactory } from './helpers/ui/element-factory/element-factory';
 
 const injectAutofillSelect = async (select: HTMLSelectElement) => {
 	const container = document.createElement('div');

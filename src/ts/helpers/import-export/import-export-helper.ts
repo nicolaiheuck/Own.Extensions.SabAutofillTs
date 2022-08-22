@@ -1,6 +1,6 @@
-import { Profile } from '../../../models/profiles.types';
-import { StorageHelper } from '../../storage/storage-helper';
-import { ProfilesListHelper } from '../profiles-list-helper';
+import { Profile } from '../../models/profiles.types';
+import { StorageHelper } from '../storage/storage-helper';
+import { ProfilesListHelper } from '../ui/profiles-list-helper/profiles-list-helper';
 import { ImportExportHelperType } from './import-export-helper.types';
 
 export const ImportExportHelper: ImportExportHelperType = {

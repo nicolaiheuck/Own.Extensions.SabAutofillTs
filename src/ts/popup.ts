@@ -1,6 +1,6 @@
 import { Loader } from './helpers/load/loader';
 import { StorageHelper } from './helpers/storage/storage-helper';
-import { FormHelper } from './helpers/ui/form-helper';
+import { FormHelper } from './helpers/ui/form-helper/form-helper';
 import { Profile } from './models/profiles.types';
 
 async function main() {

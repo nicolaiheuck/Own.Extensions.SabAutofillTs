@@ -1,4 +1,4 @@
-import { Profile } from '../../models/profiles.types';
+import { Profile } from '../../../models/profiles.types';
 
 export type FormHelperType = {
 	loadProfileAsync: (profile: Profile, preserveFormData?: Boolean) => Promise<void>;

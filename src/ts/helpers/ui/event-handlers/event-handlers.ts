@@ -1,4 +1,4 @@
-import { ImportExportHelper } from '../import-export/import-export-helper';
+import { ImportExportHelper } from '../../import-export/import-export-helper';
 import { EventHandlersType } from './event-handlers.types';
 
 export const EventHandlers: EventHandlersType = {

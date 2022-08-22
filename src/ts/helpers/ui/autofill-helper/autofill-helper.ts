@@ -1,4 +1,4 @@
-import { Profile } from '../../models/profiles.types';
+import { Profile } from '../../../models/profiles.types';
 import { AutofillHelperType } from './autofill-helper.types';
 
 export const AutofillHelper: AutofillHelperType = {

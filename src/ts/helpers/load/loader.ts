@@ -2,8 +2,8 @@ import { StorageConsts } from '../../consts/storage-consts';
 import { EmptyProfile } from '../../models/profiles.types';
 import { StorageHelper } from '../storage/storage-helper';
 import { EventHandlers } from '../ui/event-handlers/event-handlers';
-import { FormHelper } from '../ui/form-helper';
-import { ProfilesListHelper } from '../ui/profiles-list-helper';
+import { FormHelper } from '../ui/form-helper/form-helper';
+import { ProfilesListHelper } from '../ui/profiles-list-helper/profiles-list-helper';
 import { LoaderType } from './loader.types';
 
 export const Loader: LoaderType = {

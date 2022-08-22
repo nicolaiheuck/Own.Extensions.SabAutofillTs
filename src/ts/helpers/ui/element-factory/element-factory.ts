@@ -1,7 +1,7 @@
-import { Profile } from '../../models/profiles.types';
-import { StorageHelper } from '../storage/storage-helper';
+import { Profile } from '../../../models/profiles.types';
+import { StorageHelper } from '../../storage/storage-helper';
 import { ElementFactoryType } from './element-factory.types';
-import { FormHelper } from './form-helper';
+import { FormHelper } from '../form-helper/form-helper';
 
 export const ElementFactory: ElementFactoryType = {
 	createTd: (value: string) => {

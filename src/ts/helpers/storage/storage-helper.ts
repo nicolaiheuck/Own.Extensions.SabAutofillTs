@@ -1,7 +1,7 @@
 import { StorageConsts } from '../../consts/storage-consts';
 import { Profile } from '../../models/profiles.types';
-import { FormHelper } from '../ui/form-helper';
-import { ProfilesListHelper } from '../ui/profiles-list-helper';
+import { FormHelper } from '../ui/form-helper/form-helper';
+import { ProfilesListHelper } from '../ui/profiles-list-helper/profiles-list-helper';
 import { StorageHelperType } from './storage-helper.types';
 
 const { profilesKey, formDataKey } = StorageConsts;
